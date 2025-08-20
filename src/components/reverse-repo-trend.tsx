@@ -3,7 +3,9 @@ import { getRecentReverseRepoTrend } from "@/services/reverse-repo.ts";
 import { ReverseRepoTrendCharts } from "./reverse-repo-trend-charts.tsx";
 import { DataTable } from "./reverse-repo/data-table";
 import { columns } from "./reverse-repo/columns";
-import { TrendingUp, Table2, Building2 } from "lucide-react";
+import { TrendingUp, Table2, Building2, AlertCircle } from "lucide-react";
+import { Loader } from "@/components/loader";
+import { Alert, AlertTitle } from "@/components/ui/alert";
 
 export const ReverseRepoTrend = () => {
   const {
@@ -16,37 +18,24 @@ export const ReverseRepoTrend = () => {
   });
 
   if (loading) {
-    return (
-      <div className="flex items-center justify-center rounded-xl border border-slate-200 bg-gradient-to-br from-slate-50 to-slate-100 p-8 shadow-sm">
-        <div className="flex items-center gap-3 text-slate-600">
-          <div className="size-5 animate-spin rounded-full border-2 border-slate-300 border-t-slate-600"></div>
-          <span className="font-medium">
-            Loading reverse repo trend data...
-          </span>
-        </div>
-      </div>
-    );
+    return <Loader message="Loading reverse repo trend data..." />;
   }
 
   if (error) {
     return (
-      <div className="rounded-xl border border-red-200 bg-gradient-to-br from-red-50 to-red-100 p-6 shadow-sm">
-        <div className="flex items-center gap-2 text-red-700">
-          <div className="size-5 rounded-full bg-red-500"></div>
-          <span className="font-semibold">Error: {error.message}</span>
-        </div>
-      </div>
+      <Alert variant="destructive">
+        <AlertCircle />
+        <AlertTitle>Error: {error.message}</AlertTitle>
+      </Alert>
     );
   }
 
   if (!operations || operations.length === 0) {
     return (
-      <div className="rounded-xl border border-amber-200 bg-gradient-to-br from-amber-50 to-amber-100 p-6 shadow-sm">
-        <div className="flex items-center gap-2 text-amber-700">
-          <Building2 className="size-5" />
-          <span className="font-medium">No reverse repo operations found</span>
-        </div>
-      </div>
+      <Alert>
+        <Building2 />
+        <AlertTitle>No reverse repo operations found</AlertTitle>
+      </Alert>
     );
   }
 

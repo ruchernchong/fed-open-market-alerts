@@ -9,8 +9,11 @@ import {
   Settings,
   Users,
   CheckCircle2,
+  AlertCircle,
 } from "lucide-react";
 import { MetricCard } from "@/components/metric-card";
+import { Loader } from "@/components/loader";
+import { Alert, AlertTitle } from "@/components/ui/alert";
 
 export const LatestReverseRepo = () => {
   const {
@@ -23,33 +26,20 @@ export const LatestReverseRepo = () => {
   });
 
   if (loading)
-    return (
-      <div className="flex items-center justify-center rounded-xl border border-slate-200 bg-gradient-to-br from-slate-50 to-slate-100 p-8 shadow-sm">
-        <div className="flex items-center gap-3 text-slate-600">
-          <div className="size-5 animate-spin rounded-full border-2 border-slate-300 border-t-slate-600"></div>
-          <span className="font-medium">
-            Loading latest reverse repo operation...
-          </span>
-        </div>
-      </div>
-    );
+    return <Loader message="Loading latest reverse repo operation..." />;
   if (error)
     return (
-      <div className="rounded-xl border border-red-200 bg-gradient-to-br from-red-50 to-red-100 p-6 shadow-sm">
-        <div className="flex items-center gap-2 text-red-700">
-          <div className="size-5 rounded-full bg-red-500"></div>
-          <span className="font-semibold">Error: {error.message}</span>
-        </div>
-      </div>
+      <Alert variant="destructive">
+        <AlertCircle />
+        <AlertTitle>Error: {error.message}</AlertTitle>
+      </Alert>
     );
   if (!operation)
     return (
-      <div className="rounded-xl border border-amber-200 bg-gradient-to-br from-amber-50 to-amber-100 p-6 shadow-sm">
-        <div className="flex items-center gap-2 text-amber-700">
-          <Building2 className="size-5" />
-          <span className="font-medium">No reverse repo operations found</span>
-        </div>
-      </div>
+      <Alert>
+        <Building2 />
+        <AlertTitle>No reverse repo operations found</AlertTitle>
+      </Alert>
     );
 
   const formatCurrency = (amount: number) => {
