@@ -1,6 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import { getRecentReverseRepoTrend } from "@/services/reverse-repo.ts";
 import { ReverseRepoTrendCharts } from "./reverse-repo-trend-charts.tsx";
+import { Progress } from "@/components/ui/progress";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 export const ReverseRepoTrend = () => {
   const {
@@ -84,8 +91,38 @@ export const ReverseRepoTrend = () => {
                         "N/A"}
                       %
                     </td>
-                    <td className="p-3 text-right text-sm">
-                      {operation.acceptedCpty}/{operation.participatingCpty}
+                    <td>
+                      <div className="flex justify-end">
+                        <TooltipProvider>
+                          <Tooltip>
+                            <TooltipTrigger asChild>
+                              <div className="flex w-full max-w-24 flex-col gap-2">
+                                <Progress
+                                  value={
+                                    (operation.acceptedCpty /
+                                      operation.participatingCpty) *
+                                    100
+                                  }
+                                />
+                                <div className="text-muted-foreground text-center text-xs">
+                                  {Math.round(
+                                    (operation.acceptedCpty /
+                                      operation.participatingCpty) *
+                                      100,
+                                  )}
+                                  %
+                                </div>
+                              </div>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                              <p>
+                                {operation.acceptedCpty} Accepted /{" "}
+                                {operation.participatingCpty} Participating
+                              </p>
+                            </TooltipContent>
+                          </Tooltip>
+                        </TooltipProvider>
+                      </div>
                     </td>
                     <td className="p-3 text-right text-sm">
                       {previousOperation &&
