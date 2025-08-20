@@ -1,69 +1,131 @@
-# React + TypeScript + Vite
+# Fed Markets Monitor
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React application that monitors Federal Reserve reverse repo operations and market data. Built with TypeScript and
+Vite, deployable as both a web application and Chrome extension.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Real-time Market Data**: Monitor Federal Reserve reverse repo operations
+- **Data Visualization**: Interactive charts and tables for market trends
+- **Dual Deployment**: Web application and Chrome extension support
+- **Responsive Design**: Mobile-first approach with Tailwind CSS
+- **Type-Safe**: Built with TypeScript for reliability
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Frontend**: React 19, TypeScript, Tailwind CSS
+- **Build Tool**: Vite with hot module replacement
+- **Data Fetching**: TanStack Query for efficient API management
+- **UI Components**: shadcn/ui component library
+- **Charts**: Recharts for data visualization
+- **Package Manager**: Bun
+- **Code Quality**: Biome for linting and formatting
+- **Extension**: Chrome Manifest V3 with @crxjs/vite-plugin
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Getting Started
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+### Prerequisites
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- [Bun](https://bun.sh/) (recommended package manager)
+- Node.js 18+
+
+### Installation
+
+```bash
+# Clone the repository
+git clone <repository-url>
+cd fed-markets-monitor
+
+# Install dependencies
+bun install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Development
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+# Start development server
+bun dev
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Run linting with automatic fixes
+bun run lint
+
+# Build for production
+bun run build
+
+# Preview production build
+bun run preview
 ```
+
+The application will be available at `http://localhost:5173`
+
+## Project Structure
+
+```
+src/
+├── components/           # React components
+│   ├── ui/              # shadcn/ui components (excluded from linting)
+│   └── reverse-repo/    # Feature-specific components
+├── services/            # API integration layer
+├── types/              # TypeScript type definitions
+├── lib/                # Utility functions
+└── assets/             # Static assets
+```
+
+## API Integration
+
+The application fetches data from the New York Federal Reserve Markets API:
+
+- **Base URL**: `https://markets.newyorkfed.org/api/rp/reverserepo/all/results`
+- **Primary Endpoint**: `/lastTwoWeeks.json`
+- **Data Handling**: TanStack Query with automatic caching and error handling
+
+## Chrome Extension
+
+The project includes Chrome extension support:
+
+- **Manifest**: V3 extension defined in `manifest.config.ts`
+- **Permissions**: Access to `markets.newyorkfed.org` and localhost
+- **Popup**: Uses the same React app via `index.html`
+
+To load the extension in development:
+
+1. Run `bun run build`
+2. Open Chrome and go to `chrome://extensions/`
+3. Enable "Developer mode"
+4. Click "Load unpacked" and select the `dist` folder
+
+## Development Patterns
+
+### Component Architecture
+
+- Components use TanStack Query hooks for data fetching
+- Loading states handled with reusable `<Loader>` components
+- Error handling with `<Alert>` components
+- Metric cards and data tables follow established patterns
+
+### Code Quality
+
+- Strict TypeScript configuration with path aliasing (`@/` for src)
+- Biome for consistent linting and formatting
+- Double quotes and space indentation
+- Automatic import organization
+
+## Build Process
+
+The build creates both web and extension builds:
+
+1. TypeScript compilation (`tsc -b`)
+2. Vite build with React and Tailwind plugins
+3. Chrome extension manifest generation
+
+## Contributing
+
+1. Follow the existing code patterns and conventions
+2. Use the established component structure
+3. Ensure TypeScript types are properly defined
+4. Run `bun run lint` before committing
+5. Test both web and extension builds
+
+## License
+
+[MIT](LICENSE)
