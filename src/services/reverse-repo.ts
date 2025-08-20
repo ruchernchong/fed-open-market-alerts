@@ -25,3 +25,14 @@ export const getLatestReverseRepo = async (): Promise<Operation | null> => {
     throw error;
   }
 };
+
+export const getRecentReverseRepoTrend = async (): Promise<Operation[]> => {
+  try {
+    const data = await getLastTwoWeeks();
+
+    return data.repo.operations;
+  } catch (error) {
+    console.error("Error fetching reverse repo trend data:", error);
+    throw error;
+  }
+};
