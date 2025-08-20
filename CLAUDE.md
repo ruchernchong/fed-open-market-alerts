@@ -83,3 +83,8 @@ The build process creates both web and extension builds:
 1. TypeScript compilation (`tsc -b`)
 2. Vite build with React and Tailwind plugins
 3. Chrome extension manifest generation via @crxjs/vite-plugin
+
+## Claude-Specific Instructions
+
+- When creating git commits, use short commit messages (title only) without detailed descriptions
+- Follow the conventional commit format but keep messages concise
