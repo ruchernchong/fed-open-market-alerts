@@ -54,6 +54,9 @@ bun run build
 
 # Preview production build
 bun run preview
+
+# Run semantic-release locally (for testing)
+bun run release
 ```
 
 The application will be available at `http://localhost:5173`
@@ -120,11 +123,51 @@ The build creates both web and extension builds:
 
 ## Contributing
 
+### Commit Conventions
+
+This project uses [Conventional Commits](https://conventionalcommits.org/) with automated semantic versioning:
+
+**Commit Format:**
+```
+<type>(<scope>): <description>
+
+[optional body]
+
+[optional footer(s)]
+```
+
+**Common Types:**
+- `feat:` - New features (triggers minor version bump)
+- `fix:` - Bug fixes (triggers patch version bump)
+- `docs:` - Documentation changes
+- `style:` - Code style changes (formatting, etc.)
+- `refactor:` - Code refactoring without feature changes
+- `chore:` - Maintenance tasks, dependency updates
+- `ci:` - CI/CD configuration changes
+
+**Examples:**
+```bash
+feat(reverse-repo): add real-time data updates
+fix(charts): resolve tooltip positioning issue
+docs: update README installation guide
+chore(deps): update react to v19.1.2
+```
+
+### Development Guidelines
+
 1. Follow the existing code patterns and conventions
 2. Use the established component structure
 3. Ensure TypeScript types are properly defined
-4. Run `bun run lint` before committing
-5. Test both web and extension builds
+4. Write commit messages following conventional commit format
+5. Run `bun run lint` before committing
+6. Test both web and extension builds
+
+### Release Process
+
+- **Automated Releases**: Triggered on push to main branch via GitHub Actions
+- **Prerelease Versions**: Main branch produces beta versions (e.g., `1.0.0-beta.1`)
+- **Version Control**: Managed by semantic-release based on commit messages
+- **Git Hooks**: Commitlint validates commit messages before commit
 
 ## License
 

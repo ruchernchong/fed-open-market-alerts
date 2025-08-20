@@ -1,5 +1,5 @@
+import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
-import { type VariantProps, cva } from "class-variance-authority";
 
 const loaderVariants = cva(
   "flex items-center justify-center rounded-xl border border-slate-200 bg-gradient-to-br from-slate-50 to-slate-100 shadow-sm",
@@ -7,14 +7,14 @@ const loaderVariants = cva(
     variants: {
       size: {
         sm: "p-4",
-        md: "p-6", 
+        md: "p-6",
         lg: "p-8",
       },
     },
     defaultVariants: {
       size: "lg",
     },
-  }
+  },
 );
 
 const spinnerVariants = cva(
@@ -30,7 +30,7 @@ const spinnerVariants = cva(
     defaultVariants: {
       size: "lg",
     },
-  }
+  },
 );
 
 export interface LoaderProps
@@ -39,14 +39,17 @@ export interface LoaderProps
   message?: string;
 }
 
-const Loader = ({ className, size, message = "Loading...", ...props }: LoaderProps) => {
+const Loader = ({
+  className,
+  size,
+  message = "Loading...",
+  ...props
+}: LoaderProps) => {
   return (
     <div className={cn(loaderVariants({ size, className }))} {...props}>
       <div className="flex items-center gap-3 text-slate-600">
         <div className={cn(spinnerVariants({ size }))} />
-        <span className="font-medium">
-          {message}
-        </span>
+        <span className="font-medium">{message}</span>
       </div>
     </div>
   );

@@ -1,7 +1,6 @@
 "use client";
 
 import type { ColumnDef } from "@tanstack/react-table";
-import type { Operation } from "@/types/reverse-repo";
 import { Progress } from "@/components/ui/progress";
 import {
   Tooltip,
@@ -9,6 +8,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import type { Operation } from "@/types/reverse-repo";
 
 export const columns: ColumnDef<Operation>[] = [
   {

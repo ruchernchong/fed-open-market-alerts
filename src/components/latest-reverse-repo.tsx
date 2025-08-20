@@ -1,19 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
-import { getLatestReverseRepo } from "@/services/reverse-repo.ts";
 import {
+  AlertCircle,
+  Building2,
   Calendar,
+  CheckCircle2,
+  Clock,
   DollarSign,
   Percent,
-  Building2,
-  Clock,
   Settings,
   Users,
-  CheckCircle2,
-  AlertCircle,
 } from "lucide-react";
-import { MetricCard } from "@/components/metric-card";
 import { Loader } from "@/components/loader";
+import { MetricCard } from "@/components/metric-card";
 import { Alert, AlertTitle } from "@/components/ui/alert";
+import { getLatestReverseRepo } from "@/services/reverse-repo.ts";
 
 export const LatestReverseRepo = () => {
   const {

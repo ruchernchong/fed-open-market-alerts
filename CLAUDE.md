@@ -14,6 +14,7 @@ operations and market data. The project can be deployed as both a web applicatio
 - `bun run build` - Build the project (TypeScript compilation + Vite build)
 - `bun run lint` - Run Biome linting with automatic fixes
 - `bun run preview` - Preview the production build
+- `bun run release` - Run semantic-release locally (for testing)
 
 Note: This project uses Bun as the package manager and runtime.
 
@@ -75,6 +76,57 @@ Note: This project uses Bun as the package manager and runtime.
 - Components are organized by feature (reverse-repo operations)
 - Shared UI components in dedicated ui folder
 - Types mirror API response structure
+
+## Commit Conventions & Release Management
+
+### Conventional Commits
+
+This project uses [Conventional Commits](https://conventionalcommits.org/) with automated semantic versioning:
+
+**Commit Format:**
+```
+<type>(<scope>): <description>
+
+[optional body]
+
+[optional footer(s)]
+```
+
+**Commit Types:**
+- `feat:` - New features (triggers minor version bump)
+- `fix:` - Bug fixes (triggers patch version bump)
+- `docs:` - Documentation changes
+- `style:` - Code style changes (formatting, etc.)
+- `refactor:` - Code refactoring without feature changes
+- `perf:` - Performance improvements
+- `test:` - Adding or updating tests
+- `chore:` - Maintenance tasks, dependency updates
+- `ci:` - CI/CD configuration changes
+
+**Examples:**
+```bash
+feat(reverse-repo): add real-time data updates
+fix(charts): resolve tooltip positioning issue
+docs: update API integration guide
+chore(deps): update @tanstack/react-query to v5.85.6
+```
+
+**Breaking Changes:**
+- Add `!` after type: `feat!: redesign API response structure`
+- Or include `BREAKING CHANGE:` in commit footer
+
+### Automated Releases
+
+- **Main Branch:** Produces prerelease versions (e.g., `1.0.0-beta.1`, `1.0.0-beta.2`)
+- **Releases:** Triggered automatically on push to main via GitHub Actions
+- **Version Control:** Managed by semantic-release based on commit messages
+- **Git Hooks:** Commitlint validates commit messages before commit
+
+**Release Process:**
+1. Make changes following conventional commit format
+2. Push to main branch
+3. GitHub Actions runs tests, linting, build, and semantic-release
+4. New version published with auto-generated changelog and GitHub release
 
 ## Build Process
 

@@ -1,11 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
-import { getRecentReverseRepoTrend } from "@/services/reverse-repo.ts";
-import { ReverseRepoTrendCharts } from "./reverse-repo-trend-charts.tsx";
-import { DataTable } from "./reverse-repo/data-table";
-import { columns } from "./reverse-repo/columns";
-import { TrendingUp, Table2, Building2, AlertCircle } from "lucide-react";
+import { AlertCircle, Building2, Table2, TrendingUp } from "lucide-react";
 import { Loader } from "@/components/loader";
 import { Alert, AlertTitle } from "@/components/ui/alert";
+import { getRecentReverseRepoTrend } from "@/services/reverse-repo.ts";
+import { columns } from "./reverse-repo/columns";
+import { DataTable } from "./reverse-repo/data-table";
+import { ReverseRepoTrendCharts } from "./reverse-repo-trend-charts.tsx";
 
 export const ReverseRepoTrend = () => {
   const {

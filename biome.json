@@ -9,6 +9,8 @@
     "ignoreUnknown": false,
     "includes": [
       "**",
+      "!dist",
+      "!node_modules",
       "!src/components/ui",
       "!src/lib/utils.ts",
       "!src/index.css"
