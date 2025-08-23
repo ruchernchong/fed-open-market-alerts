@@ -4,13 +4,25 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.tsx";
+import { Popup } from "./Popup.tsx";
 
 const queryClient = new QueryClient();
+
+const isExtensionPopup = () => {
+  return (
+    typeof chrome !== "undefined" &&
+    chrome.runtime &&
+    chrome.runtime.id &&
+    window.location.protocol === "chrome-extension:"
+  );
+};
+
+const MainComponent = isExtensionPopup() ? Popup : App;
 
 createRoot(document.getElementById("root") as HTMLElement).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
-      <App />
+      <MainComponent />
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   </StrictMode>,
