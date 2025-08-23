@@ -1,3 +1,13 @@
+## [1.1.0](https://github.com/ruchernchong/fed-markets-monitor/compare/v1.0.0...v1.1.0) (2025-08-23)
+
+### Features
+
+* add extension background service worker ([b695ac4](https://github.com/ruchernchong/fed-markets-monitor/commit/b695ac4c5387986c4cb080b840fa3b75c594dee2))
+
+### Bug Fixes
+
+* disable body-max-line-length rule in commitlint config ([2bc872f](https://github.com/ruchernchong/fed-markets-monitor/commit/2bc872fd15d5174005f45762a68f1edd9f0f6450))
+
 ## 1.0.0 (2025-08-20)
 
 ### Features
