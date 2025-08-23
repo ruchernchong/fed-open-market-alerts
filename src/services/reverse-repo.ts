@@ -7,7 +7,9 @@ export const getLastTwoWeeks = async (): Promise<FedMarketsResponse> => {
   const response = await fetch(`${FED_MARKETS_API_BASE}/lastTwoWeeks.json`);
 
   if (!response.ok) {
-    throw new Error(`Failed to fetch Fed Markets data: ${response.statusText}`);
+    throw new Error(
+      `Failed to fetch Fed operations data: ${response.statusText}`,
+    );
   }
 
   return response.json();

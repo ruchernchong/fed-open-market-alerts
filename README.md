@@ -1,14 +1,14 @@
-# Fed Markets Monitor
+# Fed Open Market Alerts
 
-A React application that monitors Federal Reserve reverse repo operations and market data. Features automated 
-notifications for new Fed operations. Built with TypeScript and Vite, deployable as both a web application and Chrome extension.
+A React application that monitors Federal Reserve Open Market Operations with automated alerts for new operations. 
+Built with TypeScript and Vite, deployable as both a web application and Chrome extension.
 
 ## Features
 
-- **Real-time Market Data**: Monitor Federal Reserve reverse repo operations
-- **Push Notifications**: Automated alerts for new Fed market data (Chrome extension)
-- **Smart Scheduling**: Checks for updates weekdays at 1:20 PM EST when Fed operations typically publish
-- **Data Visualization**: Interactive charts and tables for market trends
+- **Real-time Market Data**: Monitor Federal Reserve Open Market Operations
+- **Push Notifications**: Automated alerts for new Fed operations (Chrome extension)
+- **Smart Scheduling**: Checks for updates weekdays at 1:20 PM EST when new Fed operations are published
+- **Data Visualization**: Interactive charts and tables for Fed operations data
 - **Dual Deployment**: Web application and Chrome extension support
 - **Responsive Design**: Mobile-first approach with Tailwind CSS
 - **Type-Safe**: Built with TypeScript for reliability
@@ -35,8 +35,8 @@ notifications for new Fed operations. Built with TypeScript and Vite, deployable
 
 ```bash
 # Clone the repository
-git clone <repository-url>
-cd fed-markets-monitor
+git clone https://github.com/ruchernchong/fed-open-market-alerts.git
+cd fed-open-market-alerts
 
 # Install dependencies
 bun install
@@ -83,7 +83,7 @@ src/
 
 ## API Integration
 
-The application fetches data from the New York Federal Reserve Markets API:
+The application fetches data from the New York Federal Reserve Open Market Operations API:
 
 - **Base URL**: `https://markets.newyorkfed.org/api/rp/reverserepo/all/results`
 - **Primary Endpoint**: `/lastTwoWeeks.json`
@@ -97,14 +97,14 @@ The project includes Chrome extension support with automated notifications:
 - **Permissions**: Access to `markets.newyorkfed.org`, localhost, and notifications
 - **Popup**: Uses the same React app via `index.html`
 - **Background Worker**: Handles scheduled data checks and notifications
-- **Smart Notifications**: Only alerts on new data changes, scheduled weekdays at 1:20 PM EST
+- **Smart Notifications**: Only alerts when new operations are published, scheduled weekdays at 1:20 PM EST
 
 ### Extension Features
 
-- **Automated Monitoring**: Background service checks for new Fed data on weekdays
+- **Automated Monitoring**: Background service checks for new Fed operations on weekdays
 - **Push Notifications**: Chrome native notifications when new operations are published
-- **Data Persistence**: Tracks last update timestamps to prevent duplicate alerts
-- **Manual Triggers**: Support for on-demand data checks via extension messaging
+- **Data Persistence**: Tracks operation timestamps to prevent duplicate alerts
+- **Manual Triggers**: Support for on-demand operation checks via extension messaging
 
 To load the extension in development:
 

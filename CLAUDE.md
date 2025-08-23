@@ -4,9 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Fed Markets Monitor is a React application built with TypeScript and Vite that monitors Federal Reserve reverse repo
-operations and market data. The project features automated notifications for new Fed operations and can be deployed as 
-both a web application and Chrome extension using the @crxjs/vite-plugin.
+Fed Open Market Alerts is a React application built with TypeScript and Vite that monitors Federal Reserve 
+Open Market Operations with automated alerts for new operations. The project can be deployed as both a web 
+application and Chrome extension using the @crxjs/vite-plugin.
 
 ## Development Commands
 

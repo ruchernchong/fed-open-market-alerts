@@ -5,14 +5,14 @@ const { version } = packageJson;
 
 export default defineManifest(() => ({
   manifest_version: 3,
-  name: "Fed Markets Monitor",
+  name: "Fed Open Market Alerts",
   version,
   description:
-    "Monitor Federal Reserve reverse repo operations and market data",
+    "Monitor Federal Reserve Open Market Operations with automated alerts",
 
   action: {
     default_popup: "index.html",
-    default_title: "Fed Markets Monitor",
+    default_title: "Fed Open Market Alerts",
   },
 
   background: {

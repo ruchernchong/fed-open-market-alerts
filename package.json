@@ -1,5 +1,5 @@
 {
-  "name": "fed-markets-monitor",
+  "name": "fed-open-market-alerts",
   "version": "1.1.0",
   "type": "module",
   "scripts": {
