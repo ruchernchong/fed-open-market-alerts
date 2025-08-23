@@ -5,8 +5,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Project Overview
 
 Fed Markets Monitor is a React application built with TypeScript and Vite that monitors Federal Reserve reverse repo
-operations and market data. The project can be deployed as both a web application and Chrome extension using the
-@crxjs/vite-plugin.
+operations and market data. The project features automated notifications for new Fed operations and can be deployed as 
+both a web application and Chrome extension using the @crxjs/vite-plugin.
 
 ## Development Commands
 
@@ -22,10 +22,15 @@ Note: This project uses Bun as the package manager and runtime.
 
 ### Data Flow
 
-- **Services Layer** (`src/services/`): API integration with NY Fed markets data
+- **Services Layer** (`src/services/`): API integration, notifications, scheduling, and storage management
+  - `reverse-repo.ts`: Fed markets API integration
+  - `notifications.ts`: Chrome extension notification handling
+  - `scheduler.ts`: Automated data check scheduling for weekdays
+  - `storage.ts`: Chrome extension storage for timestamp tracking
 - **Types** (`src/types/`): TypeScript interfaces for Fed markets API responses
 - **Components** (`src/components/`): React components with co-located data fetching using TanStack Query
 - **UI Components** (`src/components/ui/`): shadcn/ui component library (excluded from linting)
+- **Background Script** (`src/background.ts`): Chrome extension service worker for automated notifications
 
 ### API Integration
 
@@ -39,6 +44,15 @@ Note: This project uses Bun as the package manager and runtime.
 - Manifest V3 extension defined in `manifest.config.ts`
 - Host permissions for `markets.newyorkfed.org` and localhost
 - Extension popup uses the same React app via `index.html`
+- Background service worker (`src/background.ts`) handles scheduled notifications
+- Push notifications with chrome.notifications API for new Fed operations
+
+### Notification System
+
+- **Automated Scheduling**: Checks for new Fed data weekdays at 1:20 PM EST
+- **Smart Notifications**: Only notifies on actual data changes using timestamp comparison
+- **Storage Integration**: Tracks last updated timestamps to prevent duplicate notifications
+- **Manual Triggers**: Background script supports on-demand data checks via message passing
 
 ## Development Patterns
 

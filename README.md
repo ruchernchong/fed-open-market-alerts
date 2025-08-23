@@ -1,11 +1,13 @@
 # Fed Markets Monitor
 
-A React application that monitors Federal Reserve reverse repo operations and market data. Built with TypeScript and
-Vite, deployable as both a web application and Chrome extension.
+A React application that monitors Federal Reserve reverse repo operations and market data. Features automated 
+notifications for new Fed operations. Built with TypeScript and Vite, deployable as both a web application and Chrome extension.
 
 ## Features
 
 - **Real-time Market Data**: Monitor Federal Reserve reverse repo operations
+- **Push Notifications**: Automated alerts for new Fed market data (Chrome extension)
+- **Smart Scheduling**: Checks for updates weekdays at 1:20 PM EST when Fed operations typically publish
 - **Data Visualization**: Interactive charts and tables for market trends
 - **Dual Deployment**: Web application and Chrome extension support
 - **Responsive Design**: Mobile-first approach with Tailwind CSS
@@ -68,10 +70,15 @@ src/
 ├── components/           # React components
 │   ├── ui/              # shadcn/ui components (excluded from linting)
 │   └── reverse-repo/    # Feature-specific components
-├── services/            # API integration layer
+├── services/            # API integration and extension services
+│   ├── reverse-repo.ts  # Fed markets API integration
+│   ├── notifications.ts # Chrome extension notifications
+│   ├── scheduler.ts     # Automated data check scheduling
+│   └── storage.ts      # Chrome extension storage management
 ├── types/              # TypeScript type definitions
 ├── lib/                # Utility functions
-└── assets/             # Static assets
+├── assets/             # Static assets
+└── background.ts       # Chrome extension service worker
 ```
 
 ## API Integration
@@ -84,11 +91,20 @@ The application fetches data from the New York Federal Reserve Markets API:
 
 ## Chrome Extension
 
-The project includes Chrome extension support:
+The project includes Chrome extension support with automated notifications:
 
 - **Manifest**: V3 extension defined in `manifest.config.ts`
-- **Permissions**: Access to `markets.newyorkfed.org` and localhost
+- **Permissions**: Access to `markets.newyorkfed.org`, localhost, and notifications
 - **Popup**: Uses the same React app via `index.html`
+- **Background Worker**: Handles scheduled data checks and notifications
+- **Smart Notifications**: Only alerts on new data changes, scheduled weekdays at 1:20 PM EST
+
+### Extension Features
+
+- **Automated Monitoring**: Background service checks for new Fed data on weekdays
+- **Push Notifications**: Chrome native notifications when new operations are published
+- **Data Persistence**: Tracks last update timestamps to prevent duplicate alerts
+- **Manual Triggers**: Support for on-demand data checks via extension messaging
 
 To load the extension in development:
 
