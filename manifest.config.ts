@@ -15,14 +15,20 @@ export default defineManifest(() => ({
     default_title: "Fed Markets Monitor",
   },
 
+  background: {
+    service_worker: "src/background.ts",
+  },
+
+  permissions: ["notifications", "alarms", "storage"],
+
   host_permissions: [
     "https://markets.newyorkfed.org/*",
     "http://localhost:*/*",
   ],
 
   icons: {
-    16: "public/vite.svg",
-    48: "public/vite.svg",
-    128: "public/vite.svg",
+    16: "icon-16.png",
+    48: "icon-48.png",
+    128: "icon-128.png",
   },
 }));
