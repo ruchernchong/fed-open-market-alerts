@@ -2,10 +2,10 @@ import { useQuery } from "@tanstack/react-query";
 import { AlertCircle, Building2, Table2, TrendingUp } from "lucide-react";
 import { Loader } from "@/components/common/loader";
 import { Alert, AlertTitle } from "@/components/ui/alert";
+import { DataTable } from "@/components/ui/data-table";
 import { getRecentReverseRepoTrend } from "@/services/reverse-repo.ts";
 import { Charts } from "./charts";
 import { columns } from "./columns";
-import { DataTable } from "@/components/ui/data-table";
 
 export const Trend = () => {
   const {
