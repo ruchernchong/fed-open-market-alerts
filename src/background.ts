@@ -4,6 +4,7 @@ import { ALARM_NAMES, scheduleNextFedDataCheck } from "./services/scheduler.ts";
 import {
   getHasUnreadNotification,
   getLastUpdatedTimestamp,
+  getUserPreferences,
   setHasUnreadNotification,
   setLastUpdatedTimestamp,
 } from "./services/storage.ts";
@@ -36,13 +37,25 @@ const checkFedData = async () => {
     console.log("Stored lastUpdated:", storedTimestamp);
 
     if (storedTimestamp !== currentOperation.lastUpdated) {
-      console.log("New Fed data detected! Showing notification...");
+      console.log("New Fed data detected!");
 
-      await showFedDataNotification(currentOperation);
+      const preferences = await getUserPreferences();
+
+      if (
+        preferences.notificationsEnabled &&
+        preferences.immediateNotifications
+      ) {
+        console.log("Showing immediate notification...");
+        await showFedDataNotification(currentOperation);
+        console.log("Notification sent");
+      } else {
+        console.log("Immediate notifications disabled, skipping notification");
+      }
+
       await setLastUpdatedTimestamp(currentOperation.lastUpdated);
       await setHasUnreadNotification(true);
 
-      console.log("Notification sent and timestamp updated");
+      console.log("Timestamp updated and unread flag set");
     } else {
       console.log("No new Fed data found");
     }
