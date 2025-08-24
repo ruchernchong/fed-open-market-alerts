@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="public/icon.svg" alt="Fed Open Market Alerts Logo" width="120" height="120">
+</div>
+
 # Fed Open Market Alerts
 
 A React application that monitors Federal Reserve Open Market Operations with automated alerts for new operations.
