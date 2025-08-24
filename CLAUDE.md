@@ -6,7 +6,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Fed Open Market Alerts is a React application built with TypeScript and Vite that monitors Federal Reserve 
 Open Market Operations with automated alerts for new operations. The project can be deployed as both a web 
-application and Chrome extension using the @crxjs/vite-plugin.
+application and Chrome extension using the @crxjs/vite-plugin. The Chrome extension features a dedicated popup 
+dashboard with user preference management and unread notification badges.
 
 ## Development Commands
 
@@ -27,9 +28,11 @@ Note: This project uses Bun as the package manager and runtime.
   - `notifications.ts`: Chrome extension notification handling
   - `scheduler.ts`: Automated data check scheduling for weekdays
   - `storage.ts`: Chrome extension storage for timestamp tracking
-- **Types** (`src/types/`): TypeScript interfaces for Fed markets API responses
+- **Types** (`src/types/`): TypeScript interfaces for Fed markets API responses and user preferences
 - **Components** (`src/components/`): React components with co-located data fetching using TanStack Query
 - **UI Components** (`src/components/ui/`): shadcn/ui component library (excluded from linting)
+- **Popup Component** (`src/Popup.tsx`): Chrome extension popup dashboard with market data and settings
+- **Settings Component** (`src/components/settings-view.tsx`): User preference management interface
 - **Background Script** (`src/background.ts`): Chrome extension service worker for automated notifications
 
 ### API Integration
@@ -43,7 +46,9 @@ Note: This project uses Bun as the package manager and runtime.
 
 - Manifest V3 extension defined in `manifest.config.ts`
 - Host permissions for `markets.newyorkfed.org` and localhost
-- Extension popup uses the same React app via `index.html`
+- Extension popup uses dedicated `Popup.tsx` component with market dashboard and settings
+- User preference management via `settings-view.tsx` component
+- Unread notification badges on extension icon
 - Background service worker (`src/background.ts`) handles scheduled notifications
 - Push notifications with chrome.notifications API for new Fed operations
 
@@ -51,6 +56,8 @@ Note: This project uses Bun as the package manager and runtime.
 
 - **Automated Scheduling**: Checks for new Fed data weekdays at 1:20 PM EST
 - **Smart Notifications**: Only notifies on actual data changes using timestamp comparison
+- **User Preferences**: Configurable notification settings via extension popup
+- **Badge Management**: Visual indicators for unread notifications on extension icon
 - **Storage Integration**: Tracks last updated timestamps to prevent duplicate notifications
 - **Manual Triggers**: Background script supports on-demand data checks via message passing
 
@@ -61,6 +68,8 @@ Note: This project uses Bun as the package manager and runtime.
 - Components use TanStack Query for data fetching
 - Loading and error states are handled with reusable `<Loader>` and `<Alert>` components
 - Metric cards and data tables follow established patterns in existing components
+- Chrome extension popup (`Popup.tsx`) provides dashboard with market data and settings access
+- Settings management via dedicated `settings-view.tsx` component with preference controls
 
 ### Styling
 
