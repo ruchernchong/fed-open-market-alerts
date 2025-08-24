@@ -759,30 +759,24 @@ export const Landing = () => {
               {/* Bottom row: Navigation and copyright */}
               <div className="flex flex-col items-center justify-between gap-4 border-t border-slate-700 pt-6 md:flex-row">
                 <div className="flex flex-wrap items-center justify-center gap-6 text-sm">
-                  <a
-                    href="/privacy"
+                  <Link
+                    to="/privacy-policy"
                     className="text-slate-300 transition-colors hover:text-white"
                   >
                     Privacy Policy
-                  </a>
-                  <a
-                    href="/terms"
+                  </Link>
+                  <Link
+                    to="/terms-of-service"
                     className="text-slate-300 transition-colors hover:text-white"
                   >
                     Terms of Service
-                  </a>
-                  <a
-                    href="/contact"
+                  </Link>
+                  <Link
+                    to="/contact"
                     className="text-slate-300 transition-colors hover:text-white"
                   >
                     Contact
-                  </a>
-                  <a
-                    href="/about"
-                    className="text-slate-300 transition-colors hover:text-white"
-                  >
-                    About
-                  </a>
+                  </Link>
                   <a
                     href="https://github.com/ruchernchong/fed-open-market-alerts"
                     target="_blank"
