@@ -1,3 +1,10 @@
+## [1.2.0](https://github.com/ruchernchong/fed-open-market-alerts/compare/v1.1.0...v1.2.0) (2025-08-24)
+
+### Features
+
+* add badge for unread notifications ([c8ba1fd](https://github.com/ruchernchong/fed-open-market-alerts/commit/c8ba1fda05ab77cc839bd602aacea87c2ffd0b48))
+* add Chrome extension popup with market data dashboard ([db209c1](https://github.com/ruchernchong/fed-open-market-alerts/commit/db209c1b27328d2b454d4146264353398e3772d5))
+
 ## [1.1.0](https://github.com/ruchernchong/fed-markets-monitor/compare/v1.0.0...v1.1.0) (2025-08-23)
 
 ### Features
