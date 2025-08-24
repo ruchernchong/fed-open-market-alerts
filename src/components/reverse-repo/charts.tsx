@@ -16,7 +16,7 @@ import {
 } from "@/components/ui/chart";
 import type { Operation } from "@/types/reverse-repo.ts";
 
-interface ReverseRepoTrendChartsProps {
+interface ChartsProps {
   operations: Operation[];
 }
 
@@ -35,9 +35,7 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-export const ReverseRepoTrendCharts = ({
-  operations,
-}: ReverseRepoTrendChartsProps) => {
+export const Charts = ({ operations }: ChartsProps) => {
   const chartData = operations
     .slice()
     .reverse()

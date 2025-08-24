@@ -4,9 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Fed Open Market Alerts is a React application built with TypeScript and Vite that monitors Federal Reserve 
-Open Market Operations with automated alerts for new operations. The project can be deployed as both a web 
-application and Chrome extension using the @crxjs/vite-plugin. The Chrome extension features a dedicated popup 
+Fed Open Market Alerts is a React application built with TypeScript and Vite that monitors Federal Reserve
+Open Market Operations with automated alerts for new operations. The project can be deployed as both a web
+application and Chrome extension using the @crxjs/vite-plugin. The Chrome extension features a dedicated popup
 dashboard with user preference management and unread notification badges.
 
 ## Development Commands
@@ -24,15 +24,15 @@ Note: This project uses Bun as the package manager and runtime.
 ### Data Flow
 
 - **Services Layer** (`src/services/`): API integration, notifications, scheduling, and storage management
-  - `reverse-repo.ts`: Fed markets API integration
-  - `notifications.ts`: Chrome extension notification handling
-  - `scheduler.ts`: Automated data check scheduling for weekdays
-  - `storage.ts`: Chrome extension storage for timestamp tracking
+    - `reverse-repo.ts`: Fed markets API integration
+    - `notifications.ts`: Chrome extension notification handling
+    - `scheduler.ts`: Automated data check scheduling for weekdays
+    - `storage.ts`: Chrome extension storage for timestamp tracking
 - **Types** (`src/types/`): TypeScript interfaces for Fed markets API responses and user preferences
 - **Components** (`src/components/`): React components with co-located data fetching using TanStack Query
 - **UI Components** (`src/components/ui/`): shadcn/ui component library (excluded from linting)
-- **Popup Component** (`src/Popup.tsx`): Chrome extension popup dashboard with market data and settings
-- **Settings Component** (`src/components/settings-view.tsx`): User preference management interface
+- **Popup Component** (`src/popup.tsx`): Chrome extension popup dashboard with market data and settings
+- **Settings Component** (`src/components/settings/view.tsx`): User preference management interface
 - **Background Script** (`src/background.ts`): Chrome extension service worker for automated notifications
 
 ### API Integration
@@ -46,8 +46,8 @@ Note: This project uses Bun as the package manager and runtime.
 
 - Manifest V3 extension defined in `manifest.config.ts`
 - Host permissions for `markets.newyorkfed.org` and localhost
-- Extension popup uses dedicated `Popup.tsx` component with market dashboard and settings
-- User preference management via `settings-view.tsx` component
+- Extension popup uses dedicated `popup.tsx` component with market dashboard and settings
+- User preference management via `src/components/settings/view.tsx` component
 - Unread notification badges on extension icon
 - Background service worker (`src/background.ts`) handles scheduled notifications
 - Push notifications with chrome.notifications API for new Fed operations
@@ -68,8 +68,8 @@ Note: This project uses Bun as the package manager and runtime.
 - Components use TanStack Query for data fetching
 - Loading and error states are handled with reusable `<Loader>` and `<Alert>` components
 - Metric cards and data tables follow established patterns in existing components
-- Chrome extension popup (`Popup.tsx`) provides dashboard with market data and settings access
-- Settings management via dedicated `settings-view.tsx` component with preference controls
+- Chrome extension popup (`popup.tsx`) provides dashboard with market data and settings access
+- Settings management via dedicated `src/components/settings/view.tsx` component with preference controls
 
 ### Styling
 
@@ -96,8 +96,11 @@ Note: This project uses Bun as the package manager and runtime.
 ### File Organization
 
 - Services contain pure functions for API calls
-- Components are organized by feature (reverse-repo operations)
-- Shared UI components in dedicated ui folder
+- Components organized by feature in dedicated folders:
+    - `common/`: Shared components (loader, metric-card)
+    - `reverse-repo/`: Federal Reserve operations components
+    - `settings/`: User preference management components
+    - `ui/`: shadcn/ui component library (excluded from linting)
 - Types mirror API response structure
 
 ## Commit Conventions & Release Management
@@ -107,6 +110,7 @@ Note: This project uses Bun as the package manager and runtime.
 This project uses [Conventional Commits](https://conventionalcommits.org/) with automated semantic versioning:
 
 **Commit Format:**
+
 ```
 <type>(<scope>): <description>
 
@@ -116,6 +120,7 @@ This project uses [Conventional Commits](https://conventionalcommits.org/) with 
 ```
 
 **Commit Types:**
+
 - `feat:` - New features (triggers minor version bump)
 - `fix:` - Bug fixes (triggers patch version bump)
 - `docs:` - Documentation changes
@@ -127,6 +132,7 @@ This project uses [Conventional Commits](https://conventionalcommits.org/) with 
 - `ci:` - CI/CD configuration changes
 
 **Examples:**
+
 ```bash
 feat(reverse-repo): add real-time data updates
 fix(charts): resolve tooltip positioning issue
@@ -135,6 +141,7 @@ chore(deps): update @tanstack/react-query to v5.85.6
 ```
 
 **Breaking Changes:**
+
 - Add `!` after type: `feat!: redesign API response structure`
 - Or include `BREAKING CHANGE:` in commit footer
 
@@ -146,6 +153,7 @@ chore(deps): update @tanstack/react-query to v5.85.6
 - **Git Hooks:** Commitlint validates commit messages before commit
 
 **Release Process:**
+
 1. Make changes following conventional commit format
 2. Push to main branch
 3. GitHub Actions runs tests, linting, build, and semantic-release

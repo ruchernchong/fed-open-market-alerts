@@ -12,11 +12,11 @@ import {
 import type { UserPreferences } from "@/types/preferences";
 import { DEFAULT_PREFERENCES, PREFERENCE_LABELS } from "@/types/preferences";
 
-interface SettingsViewProps {
+interface ViewProps {
   onBack: () => void;
 }
 
-export const SettingsView = ({ onBack }: SettingsViewProps) => {
+export const View = ({ onBack }: ViewProps) => {
   const queryClient = useQueryClient();
 
   const notificationsEnabledId = useId();

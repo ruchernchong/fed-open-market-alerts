@@ -1,7 +1,8 @@
 # Fed Open Market Alerts
 
-A React application that monitors Federal Reserve Open Market Operations with automated alerts for new operations. 
-Built with TypeScript and Vite, deployable as both a web application and Chrome extension with dedicated popup dashboard and user preference management.
+A React application that monitors Federal Reserve Open Market Operations with automated alerts for new operations.
+Built with TypeScript and Vite, deployable as both a web application and Chrome extension with dedicated popup dashboard
+and user preference management.
 
 ## Features
 
@@ -71,9 +72,10 @@ The application will be available at `http://localhost:5173`
 ```
 src/
 ├── components/           # React components
-│   ├── ui/              # shadcn/ui components (excluded from linting)
-│   ├── reverse-repo/    # Feature-specific components
-│   └── settings-view.tsx # User preference management interface
+│   ├── common/          # Shared components (loader, metric-card)
+│   ├── reverse-repo/    # Federal Reserve operations components
+│   ├── settings/        # User preference management components
+│   └── ui/              # shadcn/ui components (excluded from linting)
 ├── services/            # API integration and extension services
 │   ├── reverse-repo.ts  # Fed markets API integration
 │   ├── notifications.ts # Chrome extension notifications
@@ -84,7 +86,7 @@ src/
 │   └── preferences.ts   # User preference types
 ├── lib/                # Utility functions
 ├── assets/             # Static assets
-├── Popup.tsx           # Chrome extension popup dashboard
+├── popup.tsx           # Chrome extension popup dashboard
 └── background.ts       # Chrome extension service worker
 ```
 
@@ -102,8 +104,8 @@ The project includes Chrome extension support with automated notifications and u
 
 - **Manifest**: V3 extension defined in `manifest.config.ts`
 - **Permissions**: Access to `markets.newyorkfed.org`, localhost, and notifications
-- **Popup Dashboard**: Dedicated `Popup.tsx` component with market data and settings access
-- **User Preferences**: Configurable settings via `settings-view.tsx` component
+- **Popup Dashboard**: Dedicated `popup.tsx` component with market data and settings access
+- **User Preferences**: Configurable settings via `src/components/settings/view.tsx` component
 - **Notification Badges**: Visual indicators for unread notifications on extension icon
 - **Background Worker**: Handles scheduled data checks and notifications
 - **Smart Notifications**: Only alerts when new operations are published, scheduled weekdays at 1:20 PM EST
@@ -133,8 +135,8 @@ To load the extension in development:
 - Loading states handled with reusable `<Loader>` components
 - Error handling with `<Alert>` components
 - Metric cards and data tables follow established patterns
-- Chrome extension popup (`Popup.tsx`) provides dashboard with market data and settings access
-- Settings management via dedicated `settings-view.tsx` component with preference controls
+- Chrome extension popup (`popup.tsx`) provides dashboard with market data and settings access
+- Settings management via dedicated `src/components/settings/view.tsx` component with preference controls
 
 ### Code Quality
 
@@ -158,6 +160,7 @@ The build creates both web and extension builds:
 This project uses [Conventional Commits](https://conventionalcommits.org/) with automated semantic versioning:
 
 **Commit Format:**
+
 ```
 <type>(<scope>): <description>
 
@@ -167,6 +170,7 @@ This project uses [Conventional Commits](https://conventionalcommits.org/) with 
 ```
 
 **Common Types:**
+
 - `feat:` - New features (triggers minor version bump)
 - `fix:` - Bug fixes (triggers patch version bump)
 - `docs:` - Documentation changes
@@ -176,6 +180,7 @@ This project uses [Conventional Commits](https://conventionalcommits.org/) with 
 - `ci:` - CI/CD configuration changes
 
 **Examples:**
+
 ```bash
 feat(reverse-repo): add real-time data updates
 fix(charts): resolve tooltip positioning issue

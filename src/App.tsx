@@ -1,5 +1,5 @@
-import { LatestReverseRepo } from "./components/latest-reverse-repo";
-import { ReverseRepoTrend } from "./components/reverse-repo-trend";
+import { Latest } from "./components/reverse-repo/latest";
+import { Trend } from "./components/reverse-repo/trend";
 
 const App = () => {
   return (
@@ -14,8 +14,8 @@ const App = () => {
         </div>
       </header>
       <main className="container mx-auto flex flex-col gap-y-8 px-6 py-8">
-        <LatestReverseRepo />
-        <ReverseRepoTrend />
+        <Latest />
+        <Trend />
       </main>
     </div>
   );

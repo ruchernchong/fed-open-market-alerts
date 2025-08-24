@@ -1,13 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import { AlertCircle, Building2, Table2, TrendingUp } from "lucide-react";
-import { Loader } from "@/components/loader";
+import { Loader } from "@/components/common/loader";
 import { Alert, AlertTitle } from "@/components/ui/alert";
 import { getRecentReverseRepoTrend } from "@/services/reverse-repo.ts";
-import { columns } from "./reverse-repo/columns";
-import { DataTable } from "./reverse-repo/data-table";
-import { ReverseRepoTrendCharts } from "./reverse-repo-trend-charts.tsx";
+import { Charts } from "./charts";
+import { columns } from "./columns";
+import { DataTable } from "./data-table";
 
-export const ReverseRepoTrend = () => {
+export const Trend = () => {
   const {
     data: operations,
     isLoading: loading,
@@ -53,7 +53,7 @@ export const ReverseRepoTrend = () => {
       </div>
 
       <div className="flex flex-col gap-6 p-6">
-        <ReverseRepoTrendCharts operations={operations} />
+        <Charts operations={operations} />
 
         <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
           <div className="border-b border-slate-200 bg-gradient-to-r from-slate-50 to-slate-100 px-6 py-4">

@@ -10,12 +10,12 @@ import {
   Settings,
   Users,
 } from "lucide-react";
-import { Loader } from "@/components/loader";
-import { MetricCard } from "@/components/metric-card";
+import { Loader } from "@/components/common/loader";
+import { MetricCard } from "@/components/common/metric-card";
 import { Alert, AlertTitle } from "@/components/ui/alert";
 import { getLatestReverseRepo } from "@/services/reverse-repo.ts";
 
-export const LatestReverseRepo = () => {
+export const Latest = () => {
   const {
     data: operation,
     isLoading: loading,

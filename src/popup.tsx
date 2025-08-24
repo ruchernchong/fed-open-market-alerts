@@ -2,8 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import { AlertCircle, Building2, ExternalLink, Settings } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Line, LineChart, XAxis, YAxis } from "recharts";
-import { Loader } from "@/components/loader";
-import { SettingsView } from "@/components/settings-view";
+import { Loader } from "@/components/common/loader";
+import { View } from "@/components/settings/view";
 import { Alert, AlertTitle } from "@/components/ui/alert";
 import {
   type ChartConfig,
@@ -83,7 +83,7 @@ export const Popup = () => {
       })) || [];
 
   if (currentView === "settings") {
-    return <SettingsView onBack={() => setCurrentView("main")} />;
+    return <View onBack={() => setCurrentView("main")} />;
   }
 
   if (loading) {
@@ -119,7 +119,7 @@ export const Popup = () => {
           <button
             type="button"
             onClick={() => setCurrentView("settings")}
-            className="text-white hover:text-slate-200 transition-colors p-1 rounded-md hover:bg-white/10"
+            className="rounded-md p-1 text-white transition-colors hover:bg-white/10 hover:text-slate-200"
           >
             <Settings className="h-5 w-5" />
           </button>
