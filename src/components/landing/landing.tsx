@@ -12,8 +12,9 @@ import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { Loader } from "@/components/common/loader";
 import { MetricCard } from "@/components/common/metric-card";
+import { Footer } from "@/components/layout/Footer";
+import { Header } from "@/components/layout/Header";
 import { Alert, AlertTitle } from "@/components/ui/alert";
-import { Avatar, AvatarImage } from "@/components/ui/avatar.tsx";
 import { getLatestReverseRepo } from "@/services/reverse-repo";
 
 export const Landing = () => {
@@ -86,30 +87,7 @@ export const Landing = () => {
       </Helmet>
 
       <div className="min-h-screen bg-gray-50">
-        {/* Header */}
-        <header className="border-b bg-white p-6 shadow-md">
-          <div className="container mx-auto">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <Avatar>
-                  <AvatarImage src="/icon.svg" />
-                </Avatar>
-                <h1 className="text-2xl font-bold text-gray-900">
-                  Fed Open Market Alerts
-                </h1>
-              </div>
-              <div className="hidden md:block">
-                <Link
-                  to="/extension"
-                  target="_blank"
-                  className="flex items-center gap-2 rounded-full bg-slate-800 px-6 py-4 text-white transition-colors hover:bg-slate-700"
-                >
-                  Add to Browser
-                </Link>
-              </div>
-            </div>
-          </div>
-        </header>
+        <Header showAction={true} />
 
         {/* Hero Section */}
         <section className="bg-gradient-to-r from-slate-800 to-slate-900 py-20 text-white">
@@ -732,71 +710,7 @@ export const Landing = () => {
           </div>
         </motion.section>
 
-        {/* Footer */}
-        <footer className="bg-slate-800 py-8 text-white">
-          <div className="container mx-auto px-6">
-            <div className="space-y-6">
-              {/* Top row: Logo and Chrome Web Store badge */}
-              <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-                <div className="flex items-center gap-3">
-                  <Avatar>
-                    <AvatarImage src="/icon.svg" />
-                  </Avatar>
-                  <span className="text-lg font-semibold">
-                    Fed Open Market Alerts
-                  </span>
-                </div>
-
-                <Link to="/extension" target="_blank">
-                  <img
-                    src="/chrome-web-store-badge.png"
-                    alt="Available in the Chrome Web Store"
-                    className="h-12 transition-opacity hover:opacity-90"
-                  />
-                </Link>
-              </div>
-
-              {/* Bottom row: Navigation and copyright */}
-              <div className="flex flex-col items-center justify-between gap-4 border-t border-slate-700 pt-6 md:flex-row">
-                <div className="flex flex-wrap items-center justify-center gap-6 text-sm">
-                  <Link
-                    to="/privacy-policy"
-                    className="text-slate-300 transition-colors hover:text-white"
-                  >
-                    Privacy Policy
-                  </Link>
-                  <Link
-                    to="/terms-of-service"
-                    className="text-slate-300 transition-colors hover:text-white"
-                  >
-                    Terms of Service
-                  </Link>
-                  <Link
-                    to="/contact"
-                    className="text-slate-300 transition-colors hover:text-white"
-                  >
-                    Contact
-                  </Link>
-                  <a
-                    href="https://github.com/ruchernchong/fed-open-market-alerts"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-slate-300 transition-colors hover:text-white"
-                  >
-                    GitHub
-                  </a>
-                </div>
-
-                <div className="text-center text-sm text-slate-400 md:text-right">
-                  <p>Data sourced from the Federal Reserve Bank of New York</p>
-                  <p className="mt-1">
-                    © {new Date().getFullYear()} Fed Open Market Alerts
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </footer>
+        <Footer />
       </div>
     </>
   );
