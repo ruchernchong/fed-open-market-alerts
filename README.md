@@ -4,6 +4,8 @@ A React application that monitors Federal Reserve Open Market Operations with au
 Built with TypeScript and Vite, deployable as both a web application and Chrome extension with dedicated popup dashboard
 and user preference management.
 
+[![Available in the Chrome Web Store](public/chrome-web-store-badge.png)](https://chrome.google.com/webstore/detail/YOUR_EXTENSION_ID)
+
 ## Features
 
 - **Real-time Market Data**: Monitor Federal Reserve Open Market Operations
