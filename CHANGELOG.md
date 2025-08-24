@@ -1,3 +1,9 @@
+## [1.3.0](https://github.com/ruchernchong/fed-open-market-alerts/compare/v1.2.0...v1.3.0) (2025-08-24)
+
+### Features
+
+* add user preference management UI in Chrome extension popup ([65e2c12](https://github.com/ruchernchong/fed-open-market-alerts/commit/65e2c12ca11357329b82c9de71d0639fde71e348))
+
 ## [1.2.0](https://github.com/ruchernchong/fed-open-market-alerts/compare/v1.1.0...v1.2.0) (2025-08-24)
 
 ### Features
