@@ -5,18 +5,26 @@
 # Fed Open Market Alerts
 
 A React application that monitors Federal Reserve Open Market Operations with automated alerts for new operations.
-Built with TypeScript and Vite, deployable as both a web application and Chrome extension with dedicated popup dashboard
-and user preference management.
+Built with TypeScript and Vite, deployable as both a multi-page web application and Chrome extension. The web
+application
+features a landing page, dashboard, and extension redirect page with React Router. The Chrome extension includes a
+dedicated
+popup dashboard with user preference management.
+
+![Chrome Web Store Badge](public/chrome-web-store-badge.png)
 
 ## Features
 
+- **Multi-Page Web App**: Landing page, dashboard, and extension redirect with React Router
 - **Real-time Market Data**: Monitor Federal Reserve Open Market Operations
+- **Landing Page**: Educational content, features overview, and latest data preview
 - **Push Notifications**: Automated alerts for new Fed operations (Chrome extension)
 - **User Preferences**: Configurable notification settings via Chrome extension popup
 - **Notification Badges**: Visual indicators for unread notifications on extension icon
 - **Popup Dashboard**: Dedicated Chrome extension popup with market data and settings
 - **Smart Scheduling**: Checks for updates weekdays at 1:20 PM EST when new Fed operations are published
 - **Data Visualization**: Interactive charts and tables for Fed operations data
+- **SEO Optimized**: Dynamic meta tags and page titles with React Helmet Async
 - **Dual Deployment**: Web application and Chrome extension support
 - **Responsive Design**: Mobile-first approach with Tailwind CSS
 - **Type-Safe**: Built with TypeScript for reliability
@@ -24,9 +32,11 @@ and user preference management.
 ## Tech Stack
 
 - **Frontend**: React 19, TypeScript, Tailwind CSS
+- **Routing**: React Router DOM for multi-page web application
+- **SEO**: React Helmet Async for dynamic meta tags
 - **Build Tool**: Vite with hot module replacement
 - **Data Fetching**: TanStack Query for efficient API management
-- **UI Components**: shadcn/ui component library
+- **UI Components**: shadcn/ui component library with Radix UI primitives
 - **Charts**: Recharts for data visualization
 - **Package Manager**: Bun
 - **Code Quality**: Biome for linting and formatting
@@ -77,9 +87,13 @@ The application will be available at `http://localhost:5173`
 src/
 ├── components/           # React components
 │   ├── common/          # Shared components (loader, metric-card)
+│   ├── dashboard/       # Dashboard page component
+│   ├── landing/         # Landing page component
 │   ├── reverse-repo/    # Federal Reserve operations components
 │   ├── settings/        # User preference management components
 │   └── ui/              # shadcn/ui components (excluded from linting)
+├── pages/               # Page components for routing
+│   └── extension.tsx    # Chrome Web Store redirect page
 ├── services/            # API integration and extension services
 │   ├── reverse-repo.ts  # Fed markets API integration
 │   ├── notifications.ts # Chrome extension notifications
@@ -90,6 +104,7 @@ src/
 │   └── preferences.ts   # User preference types
 ├── lib/                # Utility functions
 ├── assets/             # Static assets
+├── AppRouter.tsx       # React Router configuration
 ├── popup.tsx           # Chrome extension popup dashboard
 └── background.ts       # Chrome extension service worker
 ```
@@ -135,12 +150,17 @@ To load the extension in development:
 
 ### Component Architecture
 
-- Components use TanStack Query hooks for data fetching
-- Loading states handled with reusable `<Loader>` components
-- Error handling with `<Alert>` components
-- Metric cards and data tables follow established patterns
-- Chrome extension popup (`popup.tsx`) provides dashboard with market data and settings access
-- Settings management via dedicated `src/components/settings/view.tsx` component with preference controls
+- **Multi-Page Application**: React Router with distinct pages:
+    - Landing page (`/`) with features overview and latest data preview
+    - Dashboard page (`/dashboard`) with full market data and trends
+    - Extension redirect page (`/extension`) for Chrome Web Store
+- **SEO Integration**: React Helmet Async for dynamic page titles and meta tags
+- **Data Fetching**: Components use TanStack Query hooks for API integration
+- **UI Patterns**: Loading states handled with reusable `<Loader>` components
+- **Error Handling**: Consistent error handling with `<Alert>` components
+- **Shared Components**: Metric cards and data tables follow established patterns
+- **Chrome Extension**: Popup (`popup.tsx`) provides dashboard with market data and settings access
+- **Settings Management**: Dedicated `src/components/settings/view.tsx` component with preference controls
 
 ### Code Quality
 

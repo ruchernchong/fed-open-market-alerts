@@ -5,8 +5,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Project Overview
 
 Fed Open Market Alerts is a React application built with TypeScript and Vite that monitors Federal Reserve
-Open Market Operations with automated alerts for new operations. The project can be deployed as both a web
-application and Chrome extension using the @crxjs/vite-plugin. The Chrome extension features a dedicated popup
+Open Market Operations with automated alerts for new operations. The project can be deployed as both a multi-page
+web application (with React Router) and Chrome extension using the @crxjs/vite-plugin. The web application features
+a landing page, dashboard, and extension redirect page. The Chrome extension features a dedicated popup
 dashboard with user preference management and unread notification badges.
 
 ## Development Commands
@@ -30,9 +31,15 @@ Note: This project uses Bun as the package manager and runtime.
     - `storage.ts`: Chrome extension storage for timestamp tracking
 - **Types** (`src/types/`): TypeScript interfaces for Fed markets API responses and user preferences
 - **Components** (`src/components/`): React components with co-located data fetching using TanStack Query
+    - `common/`: Shared components (loader, metric-card)
+    - `reverse-repo/`: Federal Reserve operations components
+    - `settings/`: User preference management components
+    - `dashboard/`: Dashboard page component
+    - `landing/`: Landing page component
 - **UI Components** (`src/components/ui/`): shadcn/ui component library (excluded from linting)
+- **Pages** (`src/pages/`): Page components for different routes
+- **Routing** (`src/AppRouter.tsx`): React Router configuration with route definitions
 - **Popup Component** (`src/popup.tsx`): Chrome extension popup dashboard with market data and settings
-- **Settings Component** (`src/components/settings/view.tsx`): User preference management interface
 - **Background Script** (`src/background.ts`): Chrome extension service worker for automated notifications
 
 ### API Integration
@@ -65,17 +72,24 @@ Note: This project uses Bun as the package manager and runtime.
 
 ### Component Structure
 
-- Components use TanStack Query for data fetching
-- Loading and error states are handled with reusable `<Loader>` and `<Alert>` components
-- Metric cards and data tables follow established patterns in existing components
-- Chrome extension popup (`popup.tsx`) provides dashboard with market data and settings access
-- Settings management via dedicated `src/components/settings/view.tsx` component with preference controls
+- **Routing**: React Router with multi-page web application support
+    - Landing page (`/`) with features overview and latest data preview
+    - Dashboard page (`/dashboard`) with full market data and trends
+    - Extension redirect page (`/extension`) for Chrome Web Store
+- **SEO**: React Helmet Async for dynamic meta tags and page titles
+- **Data Fetching**: Components use TanStack Query for API integration
+- **UI Patterns**: Loading and error states handled with reusable `<Loader>` and `<Alert>` components
+- **Shared Components**: Metric cards and data tables follow established patterns
+- **Chrome Extension**: Popup (`popup.tsx`) provides dashboard with market data and settings access
+- **Settings Management**: Dedicated `src/components/settings/view.tsx` component with preference controls
 
 ### Styling
 
 - Tailwind CSS for styling with custom configuration
-- UI components from shadcn/ui library
+- UI components from shadcn/ui library (Avatar, Tooltip, Switch, etc.)
 - Responsive design patterns (mobile-first grid layouts)
+- Gradient backgrounds and modern card layouts
+- Chrome Web Store badge integration
 
 ### Type Safety
 

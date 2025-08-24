@@ -3,7 +3,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import App from "./App.tsx";
+import { AppRouter } from "./AppRouter.tsx";
 import { Popup } from "./popup";
 
 const queryClient = new QueryClient();
@@ -17,7 +17,7 @@ const isExtensionPopup = () => {
   );
 };
 
-const MainComponent = isExtensionPopup() ? Popup : App;
+const MainComponent = isExtensionPopup() ? Popup : AppRouter;
 
 createRoot(document.getElementById("root") as HTMLElement).render(
   <StrictMode>
