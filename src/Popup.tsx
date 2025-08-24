@@ -1,8 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
-import { AlertCircle, Building2, ExternalLink } from "lucide-react";
-import { useEffect } from "react";
+import { AlertCircle, Building2, ExternalLink, Settings } from "lucide-react";
+import { useEffect, useState } from "react";
 import { Line, LineChart, XAxis, YAxis } from "recharts";
 import { Loader } from "@/components/loader";
+import { SettingsView } from "@/components/settings-view";
 import { Alert, AlertTitle } from "@/components/ui/alert";
 import {
   type ChartConfig,
@@ -18,6 +19,8 @@ import {
 import { setHasUnreadNotification } from "@/services/storage.ts";
 
 export const Popup = () => {
+  const [currentView, setCurrentView] = useState<"main" | "settings">("main");
+
   useEffect(() => {
     if (typeof chrome !== "undefined" && chrome.storage) {
       setHasUnreadNotification(false);
@@ -79,6 +82,10 @@ export const Popup = () => {
         formattedAmount: formatCurrency(operation.totalAmtAccepted),
       })) || [];
 
+  if (currentView === "settings") {
+    return <SettingsView onBack={() => setCurrentView("main")} />;
+  }
+
   if (loading) {
     return <Loader message="Loading latest operation..." />;
   }
@@ -102,11 +109,20 @@ export const Popup = () => {
   return (
     <div className="w-80 bg-white">
       <div className="bg-gradient-to-r from-slate-800 to-slate-700 p-4">
-        <div className="flex items-center gap-2">
-          <Building2 className="h-5 w-5 text-white" />
-          <h1 className="text-lg font-bold text-white">
-            Fed Open Market Alerts
-          </h1>
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <Building2 className="h-5 w-5 text-white" />
+            <h1 className="text-lg font-bold text-white">
+              Fed Open Market Alerts
+            </h1>
+          </div>
+          <button
+            type="button"
+            onClick={() => setCurrentView("settings")}
+            className="text-white hover:text-slate-200 transition-colors p-1 rounded-md hover:bg-white/10"
+          >
+            <Settings className="h-5 w-5" />
+          </button>
         </div>
       </div>
 

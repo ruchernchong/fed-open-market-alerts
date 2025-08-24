@@ -1,12 +1,15 @@
 # Fed Open Market Alerts
 
 A React application that monitors Federal Reserve Open Market Operations with automated alerts for new operations. 
-Built with TypeScript and Vite, deployable as both a web application and Chrome extension.
+Built with TypeScript and Vite, deployable as both a web application and Chrome extension with dedicated popup dashboard and user preference management.
 
 ## Features
 
 - **Real-time Market Data**: Monitor Federal Reserve Open Market Operations
 - **Push Notifications**: Automated alerts for new Fed operations (Chrome extension)
+- **User Preferences**: Configurable notification settings via Chrome extension popup
+- **Notification Badges**: Visual indicators for unread notifications on extension icon
+- **Popup Dashboard**: Dedicated Chrome extension popup with market data and settings
 - **Smart Scheduling**: Checks for updates weekdays at 1:20 PM EST when new Fed operations are published
 - **Data Visualization**: Interactive charts and tables for Fed operations data
 - **Dual Deployment**: Web application and Chrome extension support
@@ -69,15 +72,19 @@ The application will be available at `http://localhost:5173`
 src/
 ├── components/           # React components
 │   ├── ui/              # shadcn/ui components (excluded from linting)
-│   └── reverse-repo/    # Feature-specific components
+│   ├── reverse-repo/    # Feature-specific components
+│   └── settings-view.tsx # User preference management interface
 ├── services/            # API integration and extension services
 │   ├── reverse-repo.ts  # Fed markets API integration
 │   ├── notifications.ts # Chrome extension notifications
 │   ├── scheduler.ts     # Automated data check scheduling
 │   └── storage.ts      # Chrome extension storage management
 ├── types/              # TypeScript type definitions
+│   ├── reverse-repo.ts  # Fed markets API types
+│   └── preferences.ts   # User preference types
 ├── lib/                # Utility functions
 ├── assets/             # Static assets
+├── Popup.tsx           # Chrome extension popup dashboard
 └── background.ts       # Chrome extension service worker
 ```
 
@@ -91,16 +98,21 @@ The application fetches data from the New York Federal Reserve Open Market Opera
 
 ## Chrome Extension
 
-The project includes Chrome extension support with automated notifications:
+The project includes Chrome extension support with automated notifications and user management:
 
 - **Manifest**: V3 extension defined in `manifest.config.ts`
 - **Permissions**: Access to `markets.newyorkfed.org`, localhost, and notifications
-- **Popup**: Uses the same React app via `index.html`
+- **Popup Dashboard**: Dedicated `Popup.tsx` component with market data and settings access
+- **User Preferences**: Configurable settings via `settings-view.tsx` component
+- **Notification Badges**: Visual indicators for unread notifications on extension icon
 - **Background Worker**: Handles scheduled data checks and notifications
 - **Smart Notifications**: Only alerts when new operations are published, scheduled weekdays at 1:20 PM EST
 
 ### Extension Features
 
+- **Popup Dashboard**: Interactive dashboard showing market data directly in extension popup
+- **User Preferences**: Settings interface for customizing notification preferences
+- **Badge Notifications**: Unread notification count displayed on extension icon
 - **Automated Monitoring**: Background service checks for new Fed operations on weekdays
 - **Push Notifications**: Chrome native notifications when new operations are published
 - **Data Persistence**: Tracks operation timestamps to prevent duplicate alerts
@@ -121,6 +133,8 @@ To load the extension in development:
 - Loading states handled with reusable `<Loader>` components
 - Error handling with `<Alert>` components
 - Metric cards and data tables follow established patterns
+- Chrome extension popup (`Popup.tsx`) provides dashboard with market data and settings access
+- Settings management via dedicated `settings-view.tsx` component with preference controls
 
 ### Code Quality
 
