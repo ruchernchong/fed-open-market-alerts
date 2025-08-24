@@ -1,5 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
-import { Bell, Building2, ExternalLink, TrendingUp, BarChart3, Shield, Clock } from "lucide-react";
+import {
+  BarChart3,
+  Bell,
+  Building2,
+  Clock,
+  ExternalLink,
+  Shield,
+  TrendingUp,
+} from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { Loader } from "@/components/common/loader";
@@ -134,7 +142,8 @@ export const Landing = () => {
                     Automated Alerts
                   </h4>
                   <p className="text-slate-600">
-                    Get notified when the Federal Reserve publishes new operation data (weekdays at 1:20 PM EST)
+                    Get notified when the Federal Reserve publishes new
+                    operation data (weekdays at 1:20 PM EST)
                   </p>
                 </div>
 
@@ -146,7 +155,8 @@ export const Landing = () => {
                     Data Visualization
                   </h4>
                   <p className="text-slate-600">
-                    Interactive charts and trends to understand market patterns and operation history
+                    Interactive charts and trends to understand market patterns
+                    and operation history
                   </p>
                 </div>
 
@@ -158,7 +168,8 @@ export const Landing = () => {
                     Reliable Data
                   </h4>
                   <p className="text-slate-600">
-                    Direct integration with Federal Reserve Bank of New York official data sources
+                    Direct integration with Federal Reserve Bank of New York
+                    official data sources
                   </p>
                 </div>
               </div>
@@ -265,7 +276,8 @@ export const Landing = () => {
                     Install Extension
                   </h4>
                   <p className="text-slate-600">
-                    Add the Chrome extension or bookmark the web dashboard to access Fed operation data
+                    Add the Chrome extension or bookmark the web dashboard to
+                    access Fed operation data
                   </p>
                 </div>
 
@@ -277,7 +289,8 @@ export const Landing = () => {
                     Configure Alerts
                   </h4>
                   <p className="text-slate-600">
-                    Set your notification preferences to receive alerts when new operations are published
+                    Set your notification preferences to receive alerts when new
+                    operations are published
                   </p>
                 </div>
 
@@ -289,7 +302,8 @@ export const Landing = () => {
                     Stay Informed
                   </h4>
                   <p className="text-slate-600">
-                    Receive notifications every weekday at 1:20 PM EST when new Fed data is available
+                    Receive notifications every weekday at 1:20 PM EST when new
+                    Fed data is available
                   </p>
                 </div>
               </div>
@@ -317,10 +331,14 @@ export const Landing = () => {
                       What are Reverse Repo Operations?
                     </h4>
                     <p className="mb-4 text-slate-600">
-                      Reverse repurchase agreements (reverse repos) are monetary policy tools where the Federal Reserve sells securities to eligible institutions with an agreement to buy them back at a specified price on a future date.
+                      Reverse repurchase agreements (reverse repos) are monetary
+                      policy tools where the Federal Reserve sells securities to
+                      eligible institutions with an agreement to buy them back
+                      at a specified price on a future date.
                     </p>
                     <p className="text-slate-600">
-                      These operations help the Fed manage short-term interest rates and control the money supply in financial markets.
+                      These operations help the Fed manage short-term interest
+                      rates and control the money supply in financial markets.
                     </p>
                   </div>
 
@@ -329,10 +347,14 @@ export const Landing = () => {
                       Why Monitor These Operations?
                     </h4>
                     <p className="mb-4 text-slate-600">
-                      Fed operations provide insights into monetary policy direction and market liquidity conditions. Changes in operation volumes and rates can signal policy shifts.
+                      Fed operations provide insights into monetary policy
+                      direction and market liquidity conditions. Changes in
+                      operation volumes and rates can signal policy shifts.
                     </p>
                     <p className="text-slate-600">
-                      Financial professionals, researchers, and market participants use this data to understand Fed policy implementation and market dynamics.
+                      Financial professionals, researchers, and market
+                      participants use this data to understand Fed policy
+                      implementation and market dynamics.
                     </p>
                   </div>
                 </div>
@@ -357,7 +379,10 @@ export const Landing = () => {
                     How often is the data updated?
                   </h4>
                   <p className="text-slate-600">
-                    The Federal Reserve typically publishes new operation data on weekdays around 1:15 PM EST. Our system checks for updates at 1:20 PM EST and sends alerts when new data is available.
+                    The Federal Reserve typically publishes new operation data
+                    on weekdays around 1:15 PM EST. Our system checks for
+                    updates at 1:20 PM EST and sends alerts when new data is
+                    available.
                   </p>
                 </div>
 
@@ -366,7 +391,9 @@ export const Landing = () => {
                     Is this data official?
                   </h4>
                   <p className="text-slate-600">
-                    Yes, all data is sourced directly from the Federal Reserve Bank of New York's official API at markets.newyorkfed.org. We do not modify or interpret the data.
+                    Yes, all data is sourced directly from the Federal Reserve
+                    Bank of New York's official API at markets.newyorkfed.org.
+                    We do not modify or interpret the data.
                   </p>
                 </div>
 
@@ -375,7 +402,9 @@ export const Landing = () => {
                     Do I need the Chrome extension?
                   </h4>
                   <p className="text-slate-600">
-                    No, you can use the web dashboard without installing anything. The Chrome extension provides push notifications and quick access from your browser toolbar.
+                    No, you can use the web dashboard without installing
+                    anything. The Chrome extension provides push notifications
+                    and quick access from your browser toolbar.
                   </p>
                 </div>
 
@@ -384,15 +413,19 @@ export const Landing = () => {
                     Is this service free?
                   </h4>
                   <p className="text-slate-600">
-                    Yes, Fed Open Market Alerts is completely free to use. Both the web dashboard and Chrome extension are available at no cost. This project is also open-source - you can view the code, contribute, or report issues on{" "}
-                    <a 
-                      href="https://github.com/ruchernchong/fed-open-market-alerts" 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
+                    Yes, Fed Open Market Alerts is completely free to use. Both
+                    the web dashboard and Chrome extension are available at no
+                    cost. This project is also open-source - you can view the
+                    code, contribute, or report issues on{" "}
+                    <a
+                      href="https://github.com/ruchernchong/fed-open-market-alerts"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="text-slate-800 hover:text-slate-900 underline font-medium"
                     >
                       GitHub
-                    </a>.
+                    </a>
+                    .
                   </p>
                 </div>
 
@@ -401,7 +434,9 @@ export const Landing = () => {
                     Can I customize notifications?
                   </h4>
                   <p className="text-slate-600">
-                    Yes, the Chrome extension includes settings to customize your notification preferences and control when you receive alerts.
+                    Yes, the Chrome extension includes settings to customize
+                    your notification preferences and control when you receive
+                    alerts.
                   </p>
                 </div>
               </div>
@@ -421,22 +456,34 @@ export const Landing = () => {
                   Fed Open Market Alerts
                 </span>
               </div>
-              
+
               <div className="flex flex-wrap items-center justify-center gap-6 text-sm">
-                <a href="/privacy" className="text-slate-300 hover:text-white transition-colors">
+                <a
+                  href="/privacy"
+                  className="text-slate-300 hover:text-white transition-colors"
+                >
                   Privacy Policy
                 </a>
-                <a href="/terms" className="text-slate-300 hover:text-white transition-colors">
+                <a
+                  href="/terms"
+                  className="text-slate-300 hover:text-white transition-colors"
+                >
                   Terms of Service
                 </a>
-                <a href="/contact" className="text-slate-300 hover:text-white transition-colors">
+                <a
+                  href="/contact"
+                  className="text-slate-300 hover:text-white transition-colors"
+                >
                   Contact
                 </a>
-                <a href="/about" className="text-slate-300 hover:text-white transition-colors">
+                <a
+                  href="/about"
+                  className="text-slate-300 hover:text-white transition-colors"
+                >
                   About
                 </a>
-                <a 
-                  href="https://github.com/ruchernchong/fed-open-market-alerts" 
+                <a
+                  href="https://github.com/ruchernchong/fed-open-market-alerts"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-slate-300 hover:text-white transition-colors"
@@ -444,7 +491,7 @@ export const Landing = () => {
                   GitHub
                 </a>
               </div>
-              
+
               <div className="text-center text-sm text-slate-400 md:text-right">
                 <p>Data sourced from the Federal Reserve Bank of New York</p>
                 <p className="mt-1">
