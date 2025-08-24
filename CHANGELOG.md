@@ -1,3 +1,15 @@
+## [1.4.0](https://github.com/ruchernchong/fed-open-market-alerts/compare/v1.3.1...v1.4.0) (2025-08-24)
+
+### Features
+
+* add Chrome Web Store badge to footer with improved layout ([f9faab8](https://github.com/ruchernchong/fed-open-market-alerts/commit/f9faab85fdcad4af72902140c999c6a690f0452c))
+* add Chrome Web Store redirect functionality ([0a24b56](https://github.com/ruchernchong/fed-open-market-alerts/commit/0a24b56d8513ee3277bab19696fba3ac2cf88d4e))
+* add footer pages with descriptive routes ([ab58065](https://github.com/ruchernchong/fed-open-market-alerts/commit/ab580653e2de82787971ea9d0155448888c8d9c2))
+* add landing page with React Router for web app ([717cf43](https://github.com/ruchernchong/fed-open-market-alerts/commit/717cf43be8bda156c96d40d94aa3b5f7c10b9fe0))
+* add shared layout system with Header and Footer components ([f539ade](https://github.com/ruchernchong/fed-open-market-alerts/commit/f539ade6297aa7125cbe536e853a5b9708ec4183))
+* add subtle animations to landing page with motion/react ([cca3e52](https://github.com/ruchernchong/fed-open-market-alerts/commit/cca3e5212bfc3f5fca8e544ded935b4ec202cce9))
+* enhance landing page with features, FAQ, and educational content ([98a2f39](https://github.com/ruchernchong/fed-open-market-alerts/commit/98a2f395073612b566470263872120dd1e088697))
+
 ## [1.3.1](https://github.com/ruchernchong/fed-open-market-alerts/compare/v1.3.0...v1.3.1) (2025-08-24)
 
 ### Bug Fixes
