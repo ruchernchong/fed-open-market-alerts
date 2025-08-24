@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Building2, ExternalLink, TrendingUp } from "lucide-react";
+import { Bell, Building2, ExternalLink, TrendingUp, BarChart3, Shield, Clock } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { Loader } from "@/components/common/loader";
@@ -112,6 +112,60 @@ export const Landing = () => {
           </div>
         </section>
 
+        {/* Features Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-6">
+            <div className="mx-auto max-w-6xl">
+              <div className="mb-12 text-center">
+                <h3 className="mb-4 text-3xl font-bold text-slate-900">
+                  Key Features
+                </h3>
+                <p className="text-lg text-slate-600">
+                  Everything you need to stay informed about Fed operations
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+                <div className="text-center">
+                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-slate-100">
+                    <Bell className="h-8 w-8 text-slate-600" />
+                  </div>
+                  <h4 className="mb-2 text-xl font-semibold text-slate-900">
+                    Automated Alerts
+                  </h4>
+                  <p className="text-slate-600">
+                    Get notified when the Federal Reserve publishes new operation data (weekdays at 1:20 PM EST)
+                  </p>
+                </div>
+
+                <div className="text-center">
+                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-slate-100">
+                    <BarChart3 className="h-8 w-8 text-slate-600" />
+                  </div>
+                  <h4 className="mb-2 text-xl font-semibold text-slate-900">
+                    Data Visualization
+                  </h4>
+                  <p className="text-slate-600">
+                    Interactive charts and trends to understand market patterns and operation history
+                  </p>
+                </div>
+
+                <div className="text-center">
+                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-slate-100">
+                    <Shield className="h-8 w-8 text-slate-600" />
+                  </div>
+                  <h4 className="mb-2 text-xl font-semibold text-slate-900">
+                    Reliable Data
+                  </h4>
+                  <p className="text-slate-600">
+                    Direct integration with Federal Reserve Bank of New York official data sources
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Live Data Preview */}
         <section className="py-16">
           <div className="container mx-auto px-6">
@@ -189,10 +243,176 @@ export const Landing = () => {
           </div>
         </section>
 
+        {/* How It Works */}
+        <section className="py-16 bg-slate-50">
+          <div className="container mx-auto px-6">
+            <div className="mx-auto max-w-6xl">
+              <div className="mb-12 text-center">
+                <h3 className="mb-4 text-3xl font-bold text-slate-900">
+                  How It Works
+                </h3>
+                <p className="text-lg text-slate-600">
+                  Get started in three simple steps
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+                <div className="text-center">
+                  <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-slate-800 text-white">
+                    <span className="text-2xl font-bold">1</span>
+                  </div>
+                  <h4 className="mb-3 text-xl font-semibold text-slate-900">
+                    Install Extension
+                  </h4>
+                  <p className="text-slate-600">
+                    Add the Chrome extension or bookmark the web dashboard to access Fed operation data
+                  </p>
+                </div>
+
+                <div className="text-center">
+                  <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-slate-800 text-white">
+                    <span className="text-2xl font-bold">2</span>
+                  </div>
+                  <h4 className="mb-3 text-xl font-semibold text-slate-900">
+                    Configure Alerts
+                  </h4>
+                  <p className="text-slate-600">
+                    Set your notification preferences to receive alerts when new operations are published
+                  </p>
+                </div>
+
+                <div className="text-center">
+                  <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-slate-800 text-white">
+                    <span className="text-2xl font-bold">3</span>
+                  </div>
+                  <h4 className="mb-3 text-xl font-semibold text-slate-900">
+                    Stay Informed
+                  </h4>
+                  <p className="text-slate-600">
+                    Receive notifications every weekday at 1:20 PM EST when new Fed data is available
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Educational Content */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-6">
+            <div className="mx-auto max-w-4xl">
+              <div className="mb-12 text-center">
+                <h3 className="mb-4 text-3xl font-bold text-slate-900">
+                  Understanding Fed Operations
+                </h3>
+                <p className="text-lg text-slate-600">
+                  Learn about Federal Reserve Open Market Operations
+                </p>
+              </div>
+
+              <div className="rounded-xl bg-slate-50 p-8">
+                <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+                  <div>
+                    <h4 className="mb-4 text-xl font-semibold text-slate-900">
+                      What are Reverse Repo Operations?
+                    </h4>
+                    <p className="mb-4 text-slate-600">
+                      Reverse repurchase agreements (reverse repos) are monetary policy tools where the Federal Reserve sells securities to eligible institutions with an agreement to buy them back at a specified price on a future date.
+                    </p>
+                    <p className="text-slate-600">
+                      These operations help the Fed manage short-term interest rates and control the money supply in financial markets.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h4 className="mb-4 text-xl font-semibold text-slate-900">
+                      Why Monitor These Operations?
+                    </h4>
+                    <p className="mb-4 text-slate-600">
+                      Fed operations provide insights into monetary policy direction and market liquidity conditions. Changes in operation volumes and rates can signal policy shifts.
+                    </p>
+                    <p className="text-slate-600">
+                      Financial professionals, researchers, and market participants use this data to understand Fed policy implementation and market dynamics.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section className="py-16 bg-slate-50">
+          <div className="container mx-auto px-6">
+            <div className="mx-auto max-w-4xl">
+              <div className="mb-12 text-center">
+                <h3 className="mb-4 text-3xl font-bold text-slate-900">
+                  Frequently Asked Questions
+                </h3>
+              </div>
+
+              <div className="space-y-6">
+                <div className="rounded-lg bg-white p-6 shadow-sm">
+                  <h4 className="mb-3 text-lg font-semibold text-slate-900">
+                    How often is the data updated?
+                  </h4>
+                  <p className="text-slate-600">
+                    The Federal Reserve typically publishes new operation data on weekdays around 1:15 PM EST. Our system checks for updates at 1:20 PM EST and sends alerts when new data is available.
+                  </p>
+                </div>
+
+                <div className="rounded-lg bg-white p-6 shadow-sm">
+                  <h4 className="mb-3 text-lg font-semibold text-slate-900">
+                    Is this data official?
+                  </h4>
+                  <p className="text-slate-600">
+                    Yes, all data is sourced directly from the Federal Reserve Bank of New York's official API at markets.newyorkfed.org. We do not modify or interpret the data.
+                  </p>
+                </div>
+
+                <div className="rounded-lg bg-white p-6 shadow-sm">
+                  <h4 className="mb-3 text-lg font-semibold text-slate-900">
+                    Do I need the Chrome extension?
+                  </h4>
+                  <p className="text-slate-600">
+                    No, you can use the web dashboard without installing anything. The Chrome extension provides push notifications and quick access from your browser toolbar.
+                  </p>
+                </div>
+
+                <div className="rounded-lg bg-white p-6 shadow-sm">
+                  <h4 className="mb-3 text-lg font-semibold text-slate-900">
+                    Is this service free?
+                  </h4>
+                  <p className="text-slate-600">
+                    Yes, Fed Open Market Alerts is completely free to use. Both the web dashboard and Chrome extension are available at no cost. This project is also open-source - you can view the code, contribute, or report issues on{" "}
+                    <a 
+                      href="https://github.com/ruchernchong/fed-open-market-alerts" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="text-slate-800 hover:text-slate-900 underline font-medium"
+                    >
+                      GitHub
+                    </a>.
+                  </p>
+                </div>
+
+                <div className="rounded-lg bg-white p-6 shadow-sm">
+                  <h4 className="mb-3 text-lg font-semibold text-slate-900">
+                    Can I customize notifications?
+                  </h4>
+                  <p className="text-slate-600">
+                    Yes, the Chrome extension includes settings to customize your notification preferences and control when you receive alerts.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Footer */}
         <footer className="bg-slate-800 py-8 text-white">
           <div className="container mx-auto px-6">
-            <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
+            <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
               <div className="flex items-center gap-3">
                 <Avatar>
                   <AvatarImage src="/icon.svg" />
@@ -201,6 +421,30 @@ export const Landing = () => {
                   Fed Open Market Alerts
                 </span>
               </div>
+              
+              <div className="flex flex-wrap items-center justify-center gap-6 text-sm">
+                <a href="/privacy" className="text-slate-300 hover:text-white transition-colors">
+                  Privacy Policy
+                </a>
+                <a href="/terms" className="text-slate-300 hover:text-white transition-colors">
+                  Terms of Service
+                </a>
+                <a href="/contact" className="text-slate-300 hover:text-white transition-colors">
+                  Contact
+                </a>
+                <a href="/about" className="text-slate-300 hover:text-white transition-colors">
+                  About
+                </a>
+                <a 
+                  href="https://github.com/ruchernchong/fed-open-market-alerts" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-slate-300 hover:text-white transition-colors"
+                >
+                  GitHub
+                </a>
+              </div>
+              
               <div className="text-center text-sm text-slate-400 md:text-right">
                 <p>Data sourced from the Federal Reserve Bank of New York</p>
                 <p className="mt-1">
