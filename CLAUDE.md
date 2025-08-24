@@ -154,3 +154,4 @@ The build process creates both web and extension builds:
 
 - When creating git commits, use short commit messages (title only) without detailed descriptions
 - Follow the conventional commit format but keep messages concise
+- NEVER modify files in `src/components/ui/` - these are from shadcn/ui library and should not be touched
