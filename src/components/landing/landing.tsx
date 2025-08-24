@@ -66,7 +66,8 @@ export const Landing = () => {
               </div>
               <div className="hidden md:block">
                 <Link
-                  to="/dashboard"
+                  to="/extension"
+                  target="_blank"
                   className="flex items-center gap-2 rounded-full bg-slate-800 px-6 py-4 text-white transition-colors hover:bg-slate-700"
                 >
                   Add to Browser
@@ -92,10 +93,7 @@ export const Landing = () => {
 
               {/* Chrome Extension CTA */}
               <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-                <Link
-                  to="https://chrome.google.com/webstore/category/extensions"
-                  target="_blank"
-                >
+                <Link to="/extension" target="_blank">
                   <img
                     src="/chrome-web-store-badge.png"
                     alt="Available in the Chrome Web Store"
