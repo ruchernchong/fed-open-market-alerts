@@ -1,3 +1,9 @@
+## [1.3.1](https://github.com/ruchernchong/fed-open-market-alerts/compare/v1.3.0...v1.3.1) (2025-08-24)
+
+### Bug Fixes
+
+* duplicate key in data table ([337c941](https://github.com/ruchernchong/fed-open-market-alerts/commit/337c941c3e15a2703391932c2f08bf4298caa388))
+
 ## [1.3.0](https://github.com/ruchernchong/fed-open-market-alerts/compare/v1.2.0...v1.3.0) (2025-08-24)
 
 ### Features
