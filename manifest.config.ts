@@ -21,10 +21,7 @@ export default defineManifest(() => ({
 
   permissions: ["notifications", "alarms", "storage"],
 
-  host_permissions: [
-    "https://markets.newyorkfed.org/*",
-    "http://localhost:*/*",
-  ],
+  host_permissions: ["https://markets.newyorkfed.org/*", "*://localhost:*/*"],
 
   icons: {
     16: "icon-16.png",
