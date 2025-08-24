@@ -5,11 +5,11 @@ import { Alert, AlertTitle } from "@/components/ui/alert";
 import { getRecentReverseRepoTrend } from "@/services/reverse-repo.ts";
 import { Charts } from "./charts";
 import { columns } from "./columns";
-import { DataTable } from "./data-table";
+import { DataTable } from "@/components/ui/data-table";
 
 export const Trend = () => {
   const {
-    data: operations,
+    data,
     isLoading: loading,
     error,
   } = useQuery({
@@ -30,7 +30,7 @@ export const Trend = () => {
     );
   }
 
-  if (!operations || operations.length === 0) {
+  if (!data || data.length === 0) {
     return (
       <Alert>
         <Building2 />
@@ -53,7 +53,7 @@ export const Trend = () => {
       </div>
 
       <div className="flex flex-col gap-6 p-6">
-        <Charts operations={operations} />
+        <Charts operations={data} />
 
         <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
           <div className="border-b border-slate-200 bg-gradient-to-r from-slate-50 to-slate-100 px-6 py-4">
@@ -65,7 +65,7 @@ export const Trend = () => {
             </div>
           </div>
           <div className="p-6">
-            <DataTable columns={columns} data={operations} />
+            <DataTable columns={columns} data={data} />
           </div>
         </div>
       </div>

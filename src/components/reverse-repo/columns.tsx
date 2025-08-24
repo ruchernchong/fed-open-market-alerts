@@ -78,7 +78,7 @@ export const columns: ColumnDef<Operation>[] = [
     },
   },
   {
-    accessorKey: "totalAmtAccepted",
+    accessorKey: "change",
     header: "Change",
     cell: ({ row, table }) => {
       const currentAmount = row.getValue("totalAmtAccepted") as number;
