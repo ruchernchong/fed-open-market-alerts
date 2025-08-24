@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { AlertCircle, Building2, ExternalLink } from "lucide-react";
+import { useEffect } from "react";
 import { Line, LineChart, XAxis, YAxis } from "recharts";
 import { Loader } from "@/components/loader";
 import { Alert, AlertTitle } from "@/components/ui/alert";
@@ -14,8 +15,15 @@ import {
   getLatestReverseRepo,
   getRecentReverseRepoTrend,
 } from "@/services/reverse-repo.ts";
+import { setHasUnreadNotification } from "@/services/storage.ts";
 
 export const Popup = () => {
+  useEffect(() => {
+    if (typeof chrome !== "undefined" && chrome.storage) {
+      setHasUnreadNotification(false);
+    }
+  }, []);
+
   const {
     data: operation,
     isLoading: loading,
