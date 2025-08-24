@@ -9,7 +9,6 @@
     "ignoreUnknown": false,
     "includes": [
       "**",
-      "!*.tsx",
       "!dist",
       "!node_modules",
       "!src/components/ui",
